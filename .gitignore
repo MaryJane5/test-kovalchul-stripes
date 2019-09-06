@@ -33,7 +33,6 @@ sitemap.xml
 sitemap.xml.gz
 
 cache/
-assets/
 wp-content/upgrade/
 wp-content/plugins/hello.php
 
