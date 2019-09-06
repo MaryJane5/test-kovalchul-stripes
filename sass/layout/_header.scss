@@ -1,0 +1,144 @@
+#header {
+    padding: 22px 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 26px;
+
+    nav {
+
+        @include media ('>=desktop') {
+            width: calc(100% - 140px);
+        }
+    }
+}
+
+.header__wrapper {
+    @include media ('>=desktop') {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+// logo 
+.logo {
+    display: block;
+    max-width: 130px;
+    margin: 0 auto;
+
+    @include media ('>=desktop') {
+        margin: 0 10px 0 0;
+    }
+}
+
+// nav-menu
+.nav-menu {
+    @extend %listreset;
+
+    max-width: 400px;
+    margin: 0 auto;
+
+    @include media ('>=tablet') {
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    @include media ('>=desktop') {
+        justify-content: flex-end;
+    }
+
+    li {
+        position: relative;
+        font-size: 16px;
+        padding: 0 0 10px;
+        margin: 0 0 0 10px;
+        font-family: $base-font-serif;
+
+        @include media ('>=tablet') {
+            padding: 0 12px 0 0;
+            margin: 0 0 0 10px;
+        }
+
+
+        &.active,
+        &:hover {
+
+            a {
+                color: $green;
+            }
+
+            &:after {
+                background-color: $green;
+
+                @include media ('>=tablet') {
+                    opacity: 1;
+                    visibility: visible;
+                    background-color: transparent;
+                }
+            }
+        }
+
+
+        &:after {
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 6px;
+            transition: all 0.3s;
+            width: 100%;
+            height: 5px;
+            background-color: $black;
+
+            @include media ('>=tablet') {
+                content: "\e900";
+                font-family: 'icomoon';
+                bottom: -6px;
+                opacity: 0;
+                visibility: hidden;
+                margin: 0 0 0 -4px;
+                color: $green;
+                background-color: transparent;
+                width: auto;
+                height: auto;
+            }
+        }
+
+        &:before {
+            display: none;
+            content: ' ';
+            position: absolute;
+            right: 0;
+            transform: translateY(-50%) rotate(25deg);
+            top: 50%;
+            height: 12px;
+            width: 2px;
+            background-color: #000;
+
+            @include media ('>=tablet') {
+                display: block;
+            }
+        }
+
+        &:last-child {
+            &:before {
+                display: none;
+            }
+        }
+
+        &:first-child {
+            @include media ('>=tablet') {
+                margin: 0;
+            }
+        }
+    }
+
+    a {
+        display: block;
+        vertical-align: middle;
+        text-decoration: none;
+        color: $black;
+    }
+}
